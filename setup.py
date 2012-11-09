@@ -9,7 +9,7 @@ __version__ = '1.2.0'
 def getjars(package, rootdir):
     base   = "boilerpipe-%s/" % __version__
     jar    = "boilerpipe-%s.jar" % __version__
-    url    = "http://boilerpipe.googlecode.com/files/boilerpipe-%s-bin.tar.gz" % __version__
+    url    = "http://s3.amazonaws.com/CrowdBase/boilerpipe-1.2.0-trunk.tar.gz"
     
     if os.path.exists(rootdir+'/'+base):
         return
