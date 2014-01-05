@@ -10,13 +10,13 @@ def getjars(package, rootdir):
     base   = "boilerpipe-%s/" % __version__
     jar    = "boilerpipe-%s.jar" % __version__
     url    = "http://s3.amazonaws.com/CrowdBase/boilerpipe-1.2.0-trunk.tar.gz"
-    
+
     if os.path.exists(rootdir+'/'+base):
         return
-    
+
     handle = tarfile.open(urllib.urlretrieve(url)[0], mode='r:gz')
     files  = [handle.getmember(name) for name in handle.getnames() if name == base+jar or name.startswith(base+'lib')]
-    
+
     handle.extractall(rootdir, files)
 
 def package_data(package, **kwargs):
@@ -24,7 +24,7 @@ def package_data(package, **kwargs):
     rootdir  = "src/%s/data" % package
 
     getjars(package, rootdir)
-    
+
     exclude=['']
     if kwargs and kwargs['exclude']:
         exclude=kwargs['exclude']
@@ -41,7 +41,7 @@ setup(
       version = __version__,
       packages = find_packages('src'),
       package_dir = {'':'src'},
-      install_requires = ['jpype', 'chardet'],
+      install_requires = ['JPype1', 'chardet'],
       package_data = {
           'boilerpipe': package_data('boilerpipe')
       },
